@@ -1,9 +1,10 @@
 import React from "react";
-import PropTypes from "react";
+import PropTypes from "prop-types";
+import { FaTimes } from "react-icons/fa";
 
 import Card from "../UI/Card";
 
-function FeedbackItem({ item }) {
+function FeedbackItem({ item, deleteHandler }) {
     // const clickHandler = () => {
     //     setRating((prev) => {
     //         return prev + 1;
@@ -13,8 +14,15 @@ function FeedbackItem({ item }) {
     return (
         <Card>
             <div className="num-display">{item.rating}</div>
+            {
+                <button
+                    onClick={() => deleteHandler(item.id)}
+                    className="close"
+                >
+                    <FaTimes color="purple" />
+                </button>
+            }
             <div className="text-display">{item.text}</div>
-            {/* <button onClick={clickHandler}>Click</button> */}
         </Card>
     );
 }
